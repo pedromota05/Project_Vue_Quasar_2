@@ -1,9 +1,10 @@
 <template>
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
-      <q-toolbar>
-        <q-toolbar-title>
-          Quasar Estoque
+      <q-toolbar class="row no-wrap items-center" style="height: 72px; padding-left: 16px;">
+        <q-img class="doc-header__logo-img" src="~assets/logo-dark.svg" alt="Quasar Logo" style="width: 48px; height: 48px;" />
+        <q-toolbar-title style="font-weight: 500; letter-spacing: 1px;">
+          Project Quasar
         </q-toolbar-title>
       </q-toolbar>
     </q-header>
@@ -29,3 +30,13 @@ export default defineComponent({
   }
 })
 </script>
+
+<style scoped>
+.doc-header__logo-img {
+  transition: transform .8s ease-in-out;
+}
+
+.doc-header__logo-img:hover {
+  transform: rotate(360deg);
+}
+</style>

@@ -1,8 +1,15 @@
 <template>
   <q-page style="padding: 50px">
     <q-form class="row justify-center" @submit.prevent="handleRegister">
-      <p class="col-12 text-h4 text-center"> Register </p>
-      <div class="col-md-4 col-sm-6 col-xs-10 q-gutter-y-md">
+      <div class="col-md-4 col-sm-6 col-xs-12 q-gutter-y-md">
+        <div class="d-flex justify-start align-center mb-4">
+          <router-link class="back-login" :to="{ name: 'login' }" style="display: flex; align-items: center;">
+            <q-icon name="mdi-arrow-left mr-1" class="icon-back"/>
+            Back
+          </router-link>
+          <p class="text-h4 text-center" style="font-weight: 600; line-height: 1.5;"> Register </p>
+        </div>
+
         <q-input
           label="Name"
           v-model="form.name"
@@ -25,22 +32,15 @@
           :rules="[val => (val && val.length >= 6) || 'Password is required and 6 characters']"
         />
 
+        <!-- Botão de registro -->
         <div class="full-width q-pt-md q-gutter-y-sm">
           <q-btn
             label="Register"
             color="primary"
             class="full-width"
-            outline
             rounded
             type="submit"
-          />
-          <q-btn
-            label="Back"
-            color="dark"
-            class="full-width"
-            flat
-            rounded
-            :to="{ name: 'login' }"
+            style="padding: 10px; letter-spacing: 1px; text-decoration: none"
           />
         </div>
       </div>
@@ -89,3 +89,19 @@ export default defineComponent({
   }
 })
 </script>
+
+<style scoped>
+.back-login {
+  font-size: 16px;
+  color: #121212;
+  text-decoration: none;
+}
+
+.back-login:hover {
+  text-decoration: underline;
+}
+
+.icon-back {
+  font-size: 18px;
+}
+</style>
