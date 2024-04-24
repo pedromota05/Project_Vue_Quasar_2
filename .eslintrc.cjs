@@ -52,7 +52,7 @@ module.exports = {
   // add your custom rules here
   rules: {
 
-	'no-tabs': 'off', // Desativa a proibição de tabulações
+	  'no-tabs': 'off', // Desativa a proibição de tabulações
     
     // allow async-await
     'generator-star-spacing': 'off',
