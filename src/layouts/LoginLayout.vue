@@ -1,12 +1,14 @@
 <template>
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
-      <q-toolbar class="row no-wrap items-center" style="height: 72px; padding-left: 16px;">
-        <q-img class="doc-header__logo-img" src="~assets/logo-dark.svg" alt="Quasar Logo" style="width: 48px; height: 48px;" />
-        <q-toolbar-title style="font-weight: 500; letter-spacing: 1px;">
-          Project Quasar
-        </q-toolbar-title>
-      </q-toolbar>
+      <a href="/" style="text-decoration: none">
+        <q-toolbar class="row no-wrap items-center" style="height: 72px; padding-left: 16px;">
+          <q-img class="doc-header__logo-img" src="~assets/logo-dark.svg" alt="Quasar Logo" style="width: 48px; height: 48px;" />
+          <q-toolbar-title style="color: #fff; font-weight: 500; letter-spacing: 1px;">
+            Project Quasar
+          </q-toolbar-title>
+        </q-toolbar>
+      </a>
     </q-header>
 
     <q-page-container>

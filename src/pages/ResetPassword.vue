@@ -1,7 +1,7 @@
 <template>
   <q-page style="padding: 50px">
     <q-form class="row justify-center" @submit.prevent="handlePasswordReset">
-      <p class="col-12 text-h4 text-center"> Reset Password </p>
+      <p class="col-12 text-h4 text-center" style="font-weight: 600; line-height: 1.5;"> Reset Password </p>
       <div class="col-md-4 col-sm-6 col-xs-10 q-gutter-y-md">
         <q-input
           label="New Password"
@@ -15,9 +15,9 @@
             label="Send New Password"
             color="primary"
             class="full-width"
-            outline
             rounded
             type="submit"
+            style="padding: 10px; letter-spacing: 1px; text-decoration: none"
           />
         </div>
       </div>

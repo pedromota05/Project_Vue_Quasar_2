@@ -71,7 +71,7 @@ export default defineComponent({
 }
 
 .back-login:hover {
-  text-decoration: underline;
+  color: #26A69A;
 }
 
 .icon-back {

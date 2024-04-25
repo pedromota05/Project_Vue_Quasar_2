@@ -1,7 +1,7 @@
 <template>
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
-      <q-toolbar>
+      <q-toolbar style="height: 72px; padding-left: 16px;">
         <q-btn
           flat
           dense
@@ -11,7 +11,7 @@
           @click="toggleLeftDrawer"
         />
 
-        <q-toolbar-title>
+        <q-toolbar-title style="color: #fff; font-weight: 500; letter-spacing: 1px;">
           Estoque
         </q-toolbar-title>
 
@@ -37,6 +37,7 @@
       <q-list>
         <q-item-label
           header
+          class="text-h6"
         >
           Menu
         </q-item-label>
@@ -78,6 +79,12 @@ const linksList = [
     caption: '',
     icon: 'mdi-shape-outline',
     routeName: 'category'
+  },
+  {
+    title: 'Product',
+    caption: '',
+    icon: 'mdi-archive',
+    routeName: 'product'
   }
 ]
 
