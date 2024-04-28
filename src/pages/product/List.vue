@@ -13,6 +13,24 @@
           <span class="text-h6">
             Product
           </span>
+          <q-btn
+            label="My Store"
+            size="sm"
+            outline
+            class="q-ml-sm"
+            icon="mdi-store"
+            color="primary"
+            @click="handleGoToStore"
+          />
+          <q-btn
+            label="Copy Link"
+            size="sm"
+            outline
+            class="q-ml-sm"
+            icon="mdi-content-copy"
+            color="primary"
+            @click="handleCopyPublicUrl"
+          />
           <q-space/>
           <q-btn
             v-if="$q.platform.is.desktop"
@@ -63,14 +81,15 @@
 
 <script>
 import { defineComponent, ref, onMounted } from 'vue'
-import useApi from 'src/composables/UserApi'
+import useApi from 'src/composables/UseApi'
+import useAuthUser from 'src/composables/UseAuthUser'
 import useNotify from 'src/composables/UseNotify'
 import { useRouter } from 'vue-router'
-import { useQuasar } from 'quasar'
+import { useQuasar, openURL, copyToClipboard } from 'quasar'
 import { columnsProduct } from './table'
 
 export default defineComponent({
-  name: 'PageCategoryList',
+  name: 'PageProductList',
 
   setup () {
     const products = ref([])
@@ -79,13 +98,14 @@ export default defineComponent({
     const table = 'product'
     const $q = useQuasar()
 
-    const { list, remove } = useApi()
+    const { listPublic, remove } = useApi()
+    const { user } = useAuthUser()
     const { notifyError, notifySuccess } = useNotify()
 
     const handleListProducts = async () => {
       try {
         loading.value = true
-        products.value = await list(table)
+        products.value = await listPublic(table, user.value.id)
         loading.value = false
       } catch (error) {
         notifyError(error.message)
@@ -113,6 +133,26 @@ export default defineComponent({
       }
     }
 
+    const handleGoToStore = () => {
+      const idUser = user.value.id
+      const link = router.resolve({ name: 'product-public', params: { id: idUser } })
+      // router.push({ name: 'product-public', params: { id: idUser } })
+      openURL(window.origin + link.href)
+    }
+
+    const handleCopyPublicUrl = () => {
+      const idUser = user.value.id
+      const link = router.resolve({ name: 'product-public', params: { id: idUser } })
+      const externalLink = window.origin + link.href
+      copyToClipboard(externalLink)
+        .then(() => {
+          notifySuccess('Successfully copied')
+        })
+        .catch(() => {
+          notifyError('Error copied link')
+        })
+    }
+
     onMounted(() => {
       handleListProducts()
     })
@@ -123,7 +163,9 @@ export default defineComponent({
       handleListProducts,
       loading,
       handleEdit,
-      handleRemoveProduct
+      handleRemoveProduct,
+      handleGoToStore,
+      handleCopyPublicUrl
     }
   }
 })

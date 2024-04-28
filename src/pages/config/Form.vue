@@ -1,21 +1,34 @@
 <template>
-  <q-page style="padding: 50px">
+  <q-page style="padding: 20px">
     <div class="row justify-center">
       <div class="col-12 text-center">
         <p class="text-h5" style="font-weight: 700; line-height: 1.5">
-          Form Category
+          Form Config
         </p>
       </div>
-      <q-form class="col-md-7 col-xs-12 col-sm-12 q-gutter-y-md" @submit.prevent="handleSubmit">
+      <q-form class="col-md-8 col-xs-12 col-sm-12 q-gutter-y-md" @submit.prevent="handleSubmit">
         <q-input
-          label="Name"
+          label="Store Name"
           v-model="form.name"
           lazy-rules
           :rules="[val => (val && val.length > 0) || 'Name is required']"
         />
 
+        <q-input
+          label="Phone"
+          v-model="form.phone"
+          mask="(##) #####-####"
+          unmasked-value
+        />
+
+        <div class="row justify-center q-gutter-md q-pa-md">
+          <q-color v-model="form.primary" class="col-md-4 col-sm-12 col-xs-12" />
+
+          <q-color v-model="form.secondary" class="col-md-4 col-sm-12 col-xs-12"/>
+        </div>
+
         <q-btn
-          :label="isUpdate ? 'Update' : 'Save'"
+          label="Save"
           color="primary"
           class="full-width"
           rounded
@@ -37,53 +50,59 @@
 </template>
 
 <script>
-import { defineComponent, ref, onMounted, computed } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
+import { defineComponent, ref, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 import useApi from 'src/composables/UseApi'
 import useNotify from 'src/composables/UseNotify'
+import useBrand from '../../composables/UseBrand'
+import useAuthUser from 'src/composables/UseAuthUser'
 
 export default defineComponent({
-  name: 'PageFormCategory',
+  name: 'PageFormConfig',
   setup () {
-    const table = 'category'
+    const table = 'config'
     const router = useRouter()
-    const route = useRoute()
-    const { post, getById, update } = useApi()
+    const { post, listPublic, update } = useApi()
     const { notifyError, notifySuccess } = useNotify()
+    const { setBrand } = useBrand()
+    const { user } = useAuthUser()
 
-    const isUpdate = computed(() => route.params.id)
-
-    let category = {}
+    let config = {}
     const form = ref({
-      name: ''
+      name: '',
+      phone: '',
+      primary: '',
+      secondary: ''
     })
 
     onMounted(() => {
-      if (isUpdate.value) {
-        handleGetCategory(isUpdate.value)
-      }
+      handleGetConfig()
     })
 
     const handleSubmit = async () => {
       try {
-        if (isUpdate.value) {
+        if (form.value.id) {
           await update(table, form.value)
           notifySuccess('Update Successfully')
-          router.push({ name: 'category' })
         } else {
           await post(table, form.value)
           notifySuccess('Saved Successfully')
-          router.push({ name: 'category' })
         }
+        if (form.value.primary && form.value.secondary) {
+          setBrand(form.value.primary, form.value.secondary)
+        }
+        router.push({ name: 'me' })
       } catch (error) {
         notifyError(error.message)
       }
     }
 
-    const handleGetCategory = async (id) => {
+    const handleGetConfig = async () => {
       try {
-        category = await getById(table, id)
-        form.value = category
+        config = await listPublic(table, user.value.id)
+        if (config.length > 0) {
+          form.value = config[0]
+        }
       } catch (error) {
         notifyError(error.message)
       }
@@ -91,8 +110,7 @@ export default defineComponent({
 
     return {
       handleSubmit,
-      form,
-      isUpdate
+      form
     }
   }
 })

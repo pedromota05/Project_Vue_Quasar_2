@@ -3,7 +3,7 @@
     <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
     <p class="text-h5" style="font-weight: bold">Thanks for registering!</p>
     <q-img
-      src="~assets/email.jpg"
+      src="assets/email.JPG"
       style="height: 230px; max-width: 250px"
     />
     <p class="text-body1" style="margin-top: 30px">Please confirm your email to finish registering: <strong>{{ $route.query.email }}</strong></p>
