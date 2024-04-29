@@ -7,9 +7,9 @@
 		{{ brand.name }}
 	</q-toolbar-title>
 	<q-input rounded outlined dense debounce="300" v-model="filter" placeholder="Search" class="q-mr-sm col-11" style="margin: 20px 0" v-if="isMobile">
-	  <template v-slot:append>
-	    <q-icon name="mdi-magnify"></q-icon>
-	  </template>
+		<template v-slot:append>
+			<q-icon name="mdi-magnify"></q-icon>
+		</template>
 	</q-input>
       </q-toolbar>
     </a>
