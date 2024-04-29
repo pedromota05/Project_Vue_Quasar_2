@@ -15,7 +15,7 @@
           Estoque
         </q-toolbar-title>
 
-        <dark-mode-toogle />
+        <DarkModeToggle />
 
         <q-btn-dropdown flat color="white" icon="person">
           <q-list>
@@ -66,6 +66,7 @@
 
 <script>
 import EssentialLink from 'components/EssentialLink.vue'
+import DarkModeToggle from 'components/DarkModeToggle.vue'
 
 const linksList = [
   {
@@ -104,7 +105,8 @@ export default defineComponent({
   name: 'MainLayout',
 
   components: {
-    EssentialLink
+    EssentialLink,
+    DarkModeToggle
   },
 
   setup () {

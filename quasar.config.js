@@ -116,7 +116,8 @@ module.exports = configure(function (/* ctx */) {
       plugins: [
         'Dialog',
         'Notify',
-        'Loading'
+        'Loading',
+        'LocalStorage'
       ]
     },
 
@@ -164,7 +165,24 @@ module.exports = configure(function (/* ctx */) {
       injectPwaMetaTags: true,
       swFilename: 'sw.js',
       manifestFilename: 'manifest.json',
-      useCredentialsForManifestTag: false
+      useCredentialsForManifestTag: false,
+
+      manifest: {
+        name: 'Quasar Estoque Supabase',
+        short_name: 'Quasar Estoque Supabase',
+        description: 'Estoque fácil na palma da sua mão',
+        background_color: '#ffffff',
+        theme_color: '#0B2559',
+        categories: ['utilities', 'productivity', 'personalization'],
+        icons: [
+          {
+            src: 'icons/maskable_icon_x512.png',
+            sizes: '512x512',
+            type: 'image/png',
+            purpose: 'maskable'
+          }
+        ]
+      }
       // useFilenameHashes: true,
       // extendGenerateSWOptions (cfg) {}
       // extendInjectManifestOptions (cfg) {},
