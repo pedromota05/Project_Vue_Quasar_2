@@ -1,12 +1,18 @@
 <template>
   <q-header elevated>
-    <a href="/" style="text-decoration: none">
-        <q-toolbar class="row no-wrap items-center" style="height: 72px; padding-left: 16px;">
-          <q-img class="doc-header__logo-img" src="~assets/logo-dark.svg" alt="Quasar Logo" style="width: 48px; height: 48px;" />
-          <q-toolbar-title style="color: #fff; font-weight: 500; letter-spacing: 1px;">
-            {{ brand.name }}
-          </q-toolbar-title>
-        </q-toolbar>
+    <a href="#" style="text-decoration: none">
+      <q-toolbar class="row no-wrap items-center" style="height: 72px; padding-left: 16px;">
+	<q-img class="doc-header__logo-img" src="~assets/logo-dark.svg" alt="Quasar Logo" style="width: 48px; height: 48px;" />
+	<q-toolbar-title style="color: #fff; font-weight: 500; letter-spacing: 1px;" v-if="isDesktop">
+		{{ brand.name }}
+	</q-toolbar-title>
+	<q-space />
+	<q-input rounded outlined dense debounce="300" v-model="filter" placeholder="Search" class="col-8 text-white" style="padding-right: 16px; width: auto; border-color: #ffffff" v-if="isMobile">
+		<template v-slot:append>
+			<q-icon name="mdi-magnify"></q-icon>
+		</template>
+	</q-input>
+      </q-toolbar>
     </a>
   </q-header>
   <q-page style="padding: 30px">
@@ -15,7 +21,7 @@
             {{ brand.name }}
         </div>
     </div> -->
-    <div class="q-pa-md" style="min-height: 70vh; padding: 10px">
+    <div class="q-pa-md" style="padding: 10px; margin-bottom: 35px;">
         <q-carousel
             animated
             swipeable
@@ -50,7 +56,7 @@
         </div>
         <q-space/>
         <div class="col-3 q-flex q-flex-column">
-            <q-space /> <q-input outline dense debounce="300" v-model="filter" placeholder="Search">
+            <q-space /> <q-input rounded outlined dense debounce="300" v-model="filter" placeholder="Search">
             <template v-slot:append>
                 <q-icon name="mdi-magnify"></q-icon>
             </template>
@@ -58,13 +64,7 @@
         </div>
     </div>
     <div class="row justify-center items-center" style="display: flex; flex-direction: column; margin: 15px 0" v-if="isMobile">
-        <q-select outlined v-model="categoryId" :options="optionsCategories" label="Category" option-label="name" option-value="id" map-options emit-value clearable class="col-11" dense @update:model-value="handleListProducts(route.params.id)" />
-        <q-space/>
-        <q-input outline dense debounce="300" v-model="filter" placeholder="Search" class="q-mr-sm col-10" style="margin: 20px 0">
-            <template v-slot:append>
-                <q-icon name="mdi-magnify"></q-icon>
-            </template>
-        </q-input>
+        <q-select outlined v-model="categoryId" :options="optionsCategories" label="Category" option-label="name" option-value="id" map-options emit-value clearable class="col-12" dense @update:model-value="handleListProducts(route.params.id)" />
     </div>
     <hr color="#dcdcdc" style="margin: 25px 0; height: 0.1px" />
     <p style="color: #707070; font-size: 14px; text-align: left; font-weight: 600; line-height: 130%;">{{ productCount }} produtos</p>
@@ -81,9 +81,9 @@
         hide-pagination
       >
         <template v-slot:item="props">
-            <div class="q-pa-xs col-xs-12 col-sm-6 col-md-4">
-                <q-card class="cursor-pointer" v-ripple:primary @click="handleShowDetails(props.row)" style="height: 500px; box-shadow: .5rem .5rem 1rem rgba(0, 0, 0, .15) !important;" v-if="isDesktop">
-                    <div class="text-center" style="height: 80%;">
+            <div class="q-pa-xs col-xs-12 col-sm-6 col-md-3">
+                <q-card class="cursor-pointer" v-ripple:primary @click="handleShowDetails(props.row)" style="height: 420px; box-shadow: .5rem .5rem 1rem rgba(0, 0, 0, .15) !important;" v-if="isDesktop">
+                    <div class="text-center" style="height: 75%;">
                         <q-img :src="props.row.img_url" class="standard-image" style="width: 80%; margin: 40px auto;" />
                     </div>
                     <q-card-section class="text-center">
@@ -101,6 +101,27 @@
                     </q-card-section>
                 </q-card>
             </div>
+            <!-- <div class="col-12" v-if="props.rowIndex === 3 && brand.paralax_url">
+                <q-parallax :height="200" :speed="0.5">
+                <template v-slot:media>
+                    <q-img :src="brand.paralax_url"/>
+                </template>
+
+                <template v-slot:content="scope">
+                    <div
+                    class="absolute column items-center"
+                    :style="{
+                        opacity: 0.45 + (1 - scope.percentScrolled) * 0.55,
+                        top: (scope.percentScrolled * 60) + '%',
+                        left: 0,
+                        right: 0
+                    }"
+                    >
+                        <h3 class="text-white">{{ brand.name }}</h3>
+                    </div>
+                </template>
+                </q-parallax>
+            </div> -->
       </template>
       </q-table>
     </div>
