@@ -1,27 +1,20 @@
 <template>
   <q-header elevated>
-    <a href="#" style="text-decoration: none">
-      <q-toolbar class="row no-wrap items-center" style="height: 72px; padding-left: 16px;">
-	<q-img class="doc-header__logo-img" src="~assets/logo-dark.svg" alt="Quasar Logo" style="width: 48px; height: 48px;" />
-	<q-toolbar-title style="color: #fff; font-weight: 500; letter-spacing: 1px;" v-if="isDesktop">
-		{{ brand.name }}
-	</q-toolbar-title>
-	<q-space />
-	<q-input rounded outlined dense debounce="300" v-model="filter" placeholder="Search" class="col-8 text-white" style="padding-right: 16px; width: auto; border-color: #ffffff" v-if="isMobile">
-		<template v-slot:append>
-			<q-icon name="mdi-magnify"></q-icon>
-		</template>
-	</q-input>
-      </q-toolbar>
-    </a>
+    <q-toolbar class="row no-wrap items-center" style="height: 72px; padding-left: 16px;">
+        <q-img class="doc-header__logo-img" src="~assets/logo-dark.svg" alt="Quasar Logo" style="width: 48px; height: 48px;" />
+        <q-toolbar-title style="color: #fff; font-weight: 500; letter-spacing: 1px;" v-if="isDesktop && brand.name">
+            {{ brand.name }}
+        </q-toolbar-title>
+        <q-space />
+        <q-input rounded outlined dense bg-color="white" debounce="300" v-model="filter" placeholder="Search" class="col-8 input-search" v-if="isMobile">
+            <template v-slot:append>
+                <q-icon name="mdi-magnify"></q-icon>
+            </template>
+        </q-input>
+    </q-toolbar>
   </q-header>
   <q-page style="padding: 30px">
-    <!-- <div class="row" v-if="brand.name">
-        <div class="col-12 text-center text-h4" style="font-weight: 700; line-height: 1.5">
-            {{ brand.name }}
-        </div>
-    </div> -->
-    <div class="q-pa-md" style="padding: 10px; margin-bottom: 35px;">
+    <div class="q-pa-md" style="padding: 0; margin-bottom: 30px;">
         <q-carousel
             animated
             swipeable
@@ -32,6 +25,25 @@
             :autoplay="autoplay"
             @mouseenter="autoplay = false"
             @mouseleave="autoplay = true"
+            height="340px"
+            v-if="isDesktop"
+        >
+            <img :name="1" src="https://img.freepik.com/psd-premium/banner-de-midia-social-semana-do-consumidor-com-40-de-desconto_318354-384.jpg?w=826" style="background-position: center; background-repeat: no-repeat; width: 100%; height: 100%; position: absolute;" />
+            <img :name="2" src="https://img.freepik.com/vetores-premium/modelo-de-banner-de-vetor-de-venda-oferta-limitada_348082-926.jpg?w=826" style="background-position: center; background-repeat: no-repeat; width: 100%; height: 100%; position: absolute;" />
+            <img :name="3" src="https://img.freepik.com/vetores-premium/modelo-de-banner-de-vetor-de-venda-oferta-limitada_348082-1283.jpg?w=826" style="background-position: center; background-repeat: no-repeat; width: 100%; height: 100%; position: absolute;" />
+        </q-carousel>
+        <q-carousel
+            animated
+            swipeable
+            v-model="slide"
+            arrows
+            navigation
+            infinite
+            :autoplay="autoplay"
+            @mouseenter="autoplay = false"
+            @mouseleave="autoplay = true"
+            height="220px"
+            v-if="isMobile"
         >
             <img :name="1" src="https://img.freepik.com/psd-premium/banner-de-midia-social-semana-do-consumidor-com-40-de-desconto_318354-384.jpg?w=826" style="background-position: center; background-repeat: no-repeat; width: 100%; height: 100%; position: absolute;" />
             <img :name="2" src="https://img.freepik.com/vetores-premium/modelo-de-banner-de-vetor-de-venda-oferta-limitada_348082-926.jpg?w=826" style="background-position: center; background-repeat: no-repeat; width: 100%; height: 100%; position: absolute;" />
@@ -81,47 +93,68 @@
         hide-pagination
       >
         <template v-slot:item="props">
-            <div class="q-pa-xs col-xs-12 col-sm-6 col-md-3">
-                <q-card class="cursor-pointer" v-ripple:primary @click="handleShowDetails(props.row)" style="height: 420px; box-shadow: .5rem .5rem 1rem rgba(0, 0, 0, .15) !important;" v-if="isDesktop">
-                    <div class="text-center" style="height: 75%;">
-                        <q-img :src="props.row.img_url" class="standard-image" style="width: 80%; margin: 40px auto;" />
-                    </div>
-                    <q-card-section class="text-center">
-                        <div class="text-h6">{{ props.row.name }}</div>
-                        <div class="text-subtitle1" style="font-weight: 500">{{ formatCurrency(props.row.price) }}</div>
+            <transition-group
+                appear
+                enter-active-class="animated fadeInLeft"
+                leave-active-class="animated fadeOutRight"
+            >
+            <div class="q-pa-xs col-xs-12 col-sm-6 col-md-3" key="card">
+                <q-card class="my-card cursor-pointer" flat bordered v-ripple:primary @click="handleShowDetails(props.row)" >
+                    <q-img :src="props.row.img_url" :ratio="4/3" fit="contain" style="object-position: 50% 50%;"/>
+
+                    <q-card-section>
+                        <q-btn
+                        fab
+                        color="primary"
+                        icon="mdi-heart-outline"
+                        class="absolute"
+                        style="top: 0; right: 12px; transform: translateY(-50%);"
+                        />
+
+                        <div class="row no-wrap items-center">
+                        <div class="col text-h6 ellipsis">
+                            {{ props.row.name }}
+                        </div>
+                        <div class="col-auto text-grey text-caption q-pt-md row no-wrap items-center">
+                            <q-icon name="place" />
+                            250 ft
+                        </div>
+                        </div>
+
+                        <q-rating v-model="stars" :max="5" size="32px" />
                     </q-card-section>
-                </q-card>
-                <q-card class="cursor-pointer" v-ripple:primary @click="handleShowDetails(props.row)" style="height: 420px; margin-top: 15px; box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;" v-if="isMobile">
-                    <div class="text-center" style="height: 70%;">
-                        <q-img :src="props.row.img_url" class="standard-image" style="width: 80%; margin: 40px auto;" />
-                    </div>
-                    <q-card-section class="text-center">
-                        <div class="text-h6">{{ props.row.name }}</div>
-                        <div class="text-subtitle1" style="font-weight: 500">{{ formatCurrency(props.row.price) }}</div>
+
+                    <q-card-section class="q-pt-none">
+                        <div class="text-subtitle1" style="font-weight: 600">
+                            {{ formatCurrency(props.row.price) }}
+                        </div>
+                        <div class="text-caption text-grey">
+                            {{ props.row.description }}
+                        </div>
                     </q-card-section>
                 </q-card>
             </div>
-            <!-- <div class="col-12" v-if="props.rowIndex === 3 && brand.paralax_url">
-                <q-parallax :height="200" :speed="0.5">
+            <div class="col-12" v-if="props.rowIndex === 3 && brand.paralax_url" key="paralax" style="margin: 15px 0">
+              <q-parallax :height="150" :speed="0.5">
                 <template v-slot:media>
-                    <q-img :src="brand.paralax_url"/>
+                  <img :src="brand.paralax_url">
                 </template>
-
                 <template v-slot:content="scope">
                     <div
-                    class="absolute column items-center"
-                    :style="{
-                        opacity: 0.45 + (1 - scope.percentScrolled) * 0.55,
-                        top: (scope.percentScrolled * 60) + '%',
-                        left: 0,
-                        right: 0
-                    }"
+                        class="absolute column items-center"
+                        :style="{
+                            opacity: 0.75 + (1 - scope.percentScrolled) * 0.55,
+                            left: 0,
+                            right: 0,
+                            color: '#ffffff'
+                        }"
                     >
                         <h3 class="text-white">{{ brand.name }}</h3>
                     </div>
                 </template>
-                </q-parallax>
-            </div> -->
+              </q-parallax>
+            </div>
+        </transition-group>
       </template>
       </q-table>
     </div>
@@ -230,6 +263,7 @@ export default defineComponent({
       isMobile,
       slide: ref(1),
       autoplay: ref(true),
+      stars: ref(4),
       pagesNumber: computed(() => Math.ceil(products.value.length / initialPagination.value.rowsPerPage))
     }
   }
@@ -237,7 +271,9 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.standard-image {
-    object-fit: cover;
+.input-search:focus,
+.input-search:hover {
+    outline: none;
+    color: transparent;
 }
 </style>

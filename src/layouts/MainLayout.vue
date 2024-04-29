@@ -12,7 +12,7 @@
         />
 
         <q-toolbar-title style="color: #fff; font-weight: 500; letter-spacing: 1px;">
-          Estoque
+          Your Store
         </q-toolbar-title>
 
         <DarkModeToggle />

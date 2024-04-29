@@ -4,13 +4,13 @@
       :model-value="show"
       @before-hide="handleClose"
     >
-      <q-card style="padding: 20px">
+      <q-card>
         <q-card-section>
           <div class="text-h6">Details</div>
         </q-card-section>
 
         <q-card-section v-if="product.img_url">
-          <q-img :src="product.img_url" :ratio="3/3" />
+          <q-img :src="product.img_url" :ratio="3/3" fit="contain" />
         </q-card-section>
 
         <q-card-section>

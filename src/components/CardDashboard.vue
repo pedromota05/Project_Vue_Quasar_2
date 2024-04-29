@@ -2,7 +2,7 @@
   <q-card class="my-card" bordered v-ripple:primary>
       <q-skeleton height="50px" v-if="load" />
       <q-card-section horizontal v-else>
-        <div class="col flex flex-center text-h5">
+        <div class="col flex items-center text-h5" style="padding-left: 20px">
            {{ count }} - {{ label }}
         </div>
 

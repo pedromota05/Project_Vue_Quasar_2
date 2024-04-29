@@ -1,6 +1,11 @@
 <template>
-  <q-page padding>
-    <div class="row q-col-gutter-md">
+  <q-page style="padding: 50px">
+    <div class="row q-col-gutter-md justify-center">
+        <div class="col-12 text-center" v-if="user">
+            <p class="text-h5" style="line-height: 1.5">
+                Hello <strong>{{ user.user_metadata.name }}</strong>!
+            </p>
+        </div>
         <div class="col-md-4 col-xs-12 col-sm-6">
             <card-dashboard
               table="category"

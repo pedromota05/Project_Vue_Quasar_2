@@ -14,7 +14,6 @@
           v-model="img"
           type="file"
           accept="image/*"
-          style="width: 150px; height: 150px"
         />
 
         <q-input
