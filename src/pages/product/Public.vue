@@ -8,7 +8,7 @@
           </q-toolbar-title>
 	  <q-input rounded outlined dense debounce="300" v-model="filter" placeholder="Search" class="q-mr-sm col-10" style="float: right" v-if="isMobile">
             <template v-slot:append>
-                <q-icon name="mdi-magnify"></q-icon>
+              <q-icon name="mdi-magnify"></q-icon>
             </template>
           </q-input>
         </q-toolbar>
