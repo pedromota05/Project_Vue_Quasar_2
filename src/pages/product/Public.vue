@@ -4,7 +4,7 @@
       <q-toolbar class="row no-wrap items-center" style="height: 72px; padding-left: 16px;">
 	<q-img class="doc-header__logo-img" src="~assets/logo-dark.svg" alt="Quasar Logo" style="width: 48px; height: 48px;" />
 	<q-toolbar-title style="color: #fff; font-weight: 500; letter-spacing: 1px;" v-if="isDesktop">
-	  {{ brand.name }}
+		{{ brand.name }}
 	</q-toolbar-title>
 	<q-input rounded outlined dense debounce="300" v-model="filter" placeholder="Search" class="q-mr-sm col-11" style="margin: 20px 0" v-if="isMobile">
 	  <template v-slot:append>
