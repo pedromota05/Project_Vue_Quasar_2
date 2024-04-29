@@ -6,7 +6,7 @@
 	<q-toolbar-title style="color: #fff; font-weight: 500; letter-spacing: 1px;" v-if="isDesktop">
 		{{ brand.name }}
 	</q-toolbar-title>
-	<q-input rounded outlined dense debounce="300" v-model="filter" placeholder="Search" class="q-mr-sm col-8" class="float: right; padding-right: 16px" v-if="isMobile">
+	<q-input rounded outlined dense debounce="300" v-model="filter" placeholder="Search" class="q-mr-sm col-8" style="float: right; padding-right: 16px" v-if="isMobile">
 		<template v-slot:append>
 			<q-icon name="mdi-magnify"></q-icon>
 		</template>
