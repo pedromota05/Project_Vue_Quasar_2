@@ -50,7 +50,7 @@
         </div>
         <q-space/>
         <div class="col-3 q-flex q-flex-column">
-            <q-space /> <q-input outlined dense debounce="300" v-model="filter" placeholder="Search">
+            <q-space /> <q-input rounded outlined debounce="300" v-model="filter" placeholder="Search">
             <template v-slot:append>
                 <q-icon name="mdi-magnify"></q-icon>
             </template>
@@ -60,7 +60,7 @@
     <div class="row justify-center items-center" style="display: flex; flex-direction: column; margin: 15px 0" v-if="isMobile">
         <q-select outlined v-model="categoryId" :options="optionsCategories" label="Category" option-label="name" option-value="id" map-options emit-value clearable class="col-11" dense @update:model-value="handleListProducts(route.params.id)" />
         <q-space/>
-        <q-input outlined dense debounce="300" v-model="filter" placeholder="Search" class="q-mr-sm col-10" style="margin: 20px 0">
+        <q-input rounded outlined debounce="300" v-model="filter" placeholder="Search" class="q-mr-sm col-10" style="margin: 20px 0">
             <template v-slot:append>
                 <q-icon name="mdi-magnify"></q-icon>
             </template>
