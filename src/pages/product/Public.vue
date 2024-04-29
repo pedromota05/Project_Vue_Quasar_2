@@ -7,7 +7,7 @@
 		{{ brand.name }}
 	</q-toolbar-title>
 	<q-space />
-	<q-input rounded outlined dense debounce="300" v-model="filter" placeholder="Search" class="col-8 text-white" style="padding-right: 16px; width: auto" v-if="isMobile">
+	<q-input rounded outlined dense debounce="300" v-model="filter" placeholder="Search" class="col-8 text-white" style="padding-right: 16px; width: auto; background-color: #ffffff" v-if="isMobile">
 		<template v-slot:append>
 			<q-icon name="mdi-magnify"></q-icon>
 		</template>
@@ -64,12 +64,6 @@
         </div>
     </div>
     <div class="row justify-center items-center" style="display: flex; flex-direction: column; margin: 15px 0" v-if="isMobile">
-        <q-input rounded outlined dense debounce="300" v-model="filter" placeholder="Search" class="q-mr-sm col-11" style="margin: 20px 0">
-            <template v-slot:append>
-                <q-icon name="mdi-magnify"></q-icon>
-            </template>
-        </q-input>
-	<q-space/>
         <q-select outlined v-model="categoryId" :options="optionsCategories" label="Category" option-label="name" option-value="id" map-options emit-value clearable class="col-11" dense @update:model-value="handleListProducts(route.params.id)" />
     </div>
     <hr color="#dcdcdc" style="margin: 25px 0; height: 0.1px" />
