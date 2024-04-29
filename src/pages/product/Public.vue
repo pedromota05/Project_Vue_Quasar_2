@@ -15,7 +15,7 @@
             {{ brand.name }}
         </div>
     </div> -->
-    <div class="q-pa-md" style="min-height: 70vh; padding: 10px">
+    <div class="q-pa-md" style="padding: 10px">
         <q-carousel
             animated
             swipeable
