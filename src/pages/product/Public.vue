@@ -64,7 +64,7 @@
         </div>
     </div>
     <div class="row justify-center items-center" style="display: flex; flex-direction: column; margin: 15px 0" v-if="isMobile">
-        <q-select outlined v-model="categoryId" :options="optionsCategories" label="Category" option-label="name" option-value="id" map-options emit-value clearable class="col-11" dense @update:model-value="handleListProducts(route.params.id)" />
+        <q-select outlined v-model="categoryId" :options="optionsCategories" label="Category" option-label="name" option-value="id" map-options emit-value clearable class="col-12" dense @update:model-value="handleListProducts(route.params.id)" />
     </div>
     <hr color="#dcdcdc" style="margin: 25px 0; height: 0.1px" />
     <p style="color: #707070; font-size: 14px; text-align: left; font-weight: 600; line-height: 130%;">{{ productCount }} produtos</p>
