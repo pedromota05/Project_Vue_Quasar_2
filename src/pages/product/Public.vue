@@ -1,13 +1,13 @@
 <template>
   <q-header elevated>
-    <a href="/" style="text-decoration: none">
+    <a href="#" style="text-decoration: none">
       <q-toolbar class="row no-wrap items-center" style="height: 72px; padding-left: 16px;">
 	<q-img class="doc-header__logo-img" src="~assets/logo-dark.svg" alt="Quasar Logo" style="width: 48px; height: 48px;" />
 	<q-toolbar-title style="color: #fff; font-weight: 500; letter-spacing: 1px;" v-if="isDesktop">
 		{{ brand.name }}
 	</q-toolbar-title>
 	<q-space />
-	<q-input rounded outlined dense debounce="300" v-model="filter" placeholder="Search" class="col-8 text-white" style="padding-right: 16px; width: auto; background-color: #ffffff" v-if="isMobile">
+	<q-input rounded outlined dense debounce="300" v-model="filter" placeholder="Search" class="col-8 text-white" style="padding-right: 16px; width: auto; border-color: #ffffff" v-if="isMobile">
 		<template v-slot:append>
 			<q-icon name="mdi-magnify"></q-icon>
 		</template>
