@@ -25,6 +25,7 @@
 	:autoplay="autoplay"
 	@mouseenter="autoplay = false"
 	@mouseleave="autoplay = true"
+	swipeable
 	height="420"
 	v-if="isDesktop"
 	>
