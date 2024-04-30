@@ -4,7 +4,7 @@
       :model-value="show"
       @before-hide="handleClose"
     >
-      <q-card style="width: 400px;">
+      <q-card style="width: 500px;">
         <q-card-section>
           <div class="text-h6">Details</div>
         </q-card-section>
