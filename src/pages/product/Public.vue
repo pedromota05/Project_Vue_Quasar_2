@@ -14,7 +14,7 @@
     </q-toolbar>
   </q-header>
   <q-page style="padding: 30px">
-    <div class="q-pa-md" style="padding: 0; margin-bottom: 30px;">
+    <div class="q-pa-md carousel-style" style="padding: 0; margin-bottom: 30px;">
         <q-carousel
 	animated
 	swipeable
@@ -267,6 +267,9 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.carousel-style {
+    height: 420px !important;
+}
 .input-search:focus,
 .input-search:hover {
     outline: none;
