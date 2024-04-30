@@ -22,7 +22,7 @@
 	arrows
 	navigation
 	infinite
-	control-color="#a0a0a0"
+	control-color="red"
 	:autoplay="4000"
 	@mouseenter="autoplay = false"
 	@mouseleave="autoplay = true"
