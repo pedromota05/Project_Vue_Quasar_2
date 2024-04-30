@@ -25,7 +25,7 @@
 	:autoplay="3000"
 	@mouseenter="autoplay = false"
 	@mouseleave="autoplay = true"
-	style="height: 420 !important;"
+	style="height: 440px !important;"
 	v-if="isDesktop"
 	>
             <img :name="1" src="https://img.freepik.com/psd-premium/banner-de-midia-social-semana-do-consumidor-com-40-de-desconto_318354-384.jpg?w=826" style="background-position: center; background-repeat: no-repeat; width: 100%; height: 100%; position: absolute;" />
