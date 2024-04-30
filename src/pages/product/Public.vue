@@ -22,15 +22,16 @@
 	arrows
 	navigation
 	infinite
+	control-color="gray"
 	:autoplay="4000"
 	@mouseenter="autoplay = false"
 	@mouseleave="autoplay = true"
 	style="height: 420px !important;"
 	v-if="isDesktop"
 	>
-            <img :name="1" src="https://img.freepik.com/psd-premium/banner-de-midia-social-semana-do-consumidor-com-40-de-desconto_318354-384.jpg?w=826" style="background-position: center; background-repeat: no-repeat; width: 100%; height: 100%; position: absolute;" />
+            <img :name="1" src="https://img.freepik.com/psd-gratuitas/banner-de-midia-social-instagram-sexta-feira-negra-para-ofertas-imperdiveis_220664-3543.jpg?t=st=1714484880~exp=1714488480~hmac=5fd0083ff64459788663b2416b9dc5d75039ba2930baceda52dcda41a8b1f2d0&w=1380" style="background-position: center; background-repeat: no-repeat; width: 100%; height: 100%; position: absolute;" />
             <img :name="2" src="https://img.freepik.com/psd-premium/banner-de-modelo-de-midia-social-sexta-feira-negra-chegou-com-otimas-ofertas_318354-894.jpg?w=1380" style="background-position: center; background-repeat: no-repeat; width: 100%; height: 100%; position: absolute;" />
-            <img :name="3" src="https://img.freepik.com/vetores-premium/modelo-de-banner-de-vetor-de-venda-oferta-limitada_348082-1283.jpg?w=826" style="background-position: center; background-repeat: no-repeat; width: 100%; height: 100%; position: absolute;" />
+            <img :name="3" src="https://img.freepik.com/vetores-gratis/banner-grunge-de-venda-larga-laranja-preta-sexta-feira_1017-34783.jpg?t=st=1714484823~exp=1714488423~hmac=2fa6f3b32ff267993c7e69dbaeec7fd034e79980410c4c0ac431d2620547c34e&w=1380" style="background-position: center; background-repeat: no-repeat; width: 100%; height: 100%; position: absolute;" />
         </q-carousel>
         <q-carousel
             animated
