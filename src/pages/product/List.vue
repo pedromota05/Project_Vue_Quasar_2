@@ -41,7 +41,7 @@
           />
         </template>
         <template v-slot:body-cell-img_url="props">
-            <q-td :props="props">
+            <q-td :props="props" style="object-fit: contain;">
                 <q-avatar v-if="props.row.img_url">
                     <img :src="props.row.img_url">
                 </q-avatar>
