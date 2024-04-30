@@ -14,7 +14,7 @@
     </q-toolbar>
   </q-header>
   <q-page style="padding: 30px">
-    <div class="q-pa-md carousel-style" style="padding: 0; margin-bottom: 30px;">
+    <div class="q-pa-md" style="padding: 0; margin-bottom: 30px;">
         <q-carousel
 	animated
 	swipeable
@@ -25,7 +25,7 @@
 	:autoplay="3000"
 	@mouseenter="autoplay = false"
 	@mouseleave="autoplay = true"
-	height="420"
+	style="height: 420 !important;"
 	v-if="isDesktop"
 	>
             <img :name="1" src="https://img.freepik.com/psd-premium/banner-de-midia-social-semana-do-consumidor-com-40-de-desconto_318354-384.jpg?w=826" style="background-position: center; background-repeat: no-repeat; width: 100%; height: 100%; position: absolute;" />
@@ -267,9 +267,6 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.carousel-style {
-    height: 420px !important;
-}
 .input-search:focus,
 .input-search:hover {
     outline: none;
