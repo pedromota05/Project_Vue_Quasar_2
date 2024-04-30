@@ -16,18 +16,18 @@
   <q-page style="padding: 30px">
     <div class="q-pa-md" style="padding: 0; margin-bottom: 30px;">
         <q-carousel
-            animated
-            swipeable
-            v-model="slide"
-            arrows
-            navigation
-            infinite
-            :autoplay="autoplay"
-            @mouseenter="autoplay = false"
-            @mouseleave="autoplay = true"
-	    	height="420"
-            v-if="isDesktop"
-        >
+	  animated
+	  swipeable
+	  v-model="slide"
+	  arrows
+	  navigation
+	  infinite
+	  :autoplay="autoplay"
+	  @mouseenter="autoplay = false"
+	  @mouseleave="autoplay = true"
+	  height="420"
+	  v-if="isDesktop"
+	>
             <img :name="1" src="https://img.freepik.com/psd-premium/banner-de-midia-social-semana-do-consumidor-com-40-de-desconto_318354-384.jpg?w=826" style="background-position: center; background-repeat: no-repeat; width: 100%; height: 100%; position: absolute;" />
             <img :name="2" src="https://img.freepik.com/vetores-premium/modelo-de-banner-de-vetor-de-venda-oferta-limitada_348082-926.jpg?w=826" style="background-position: center; background-repeat: no-repeat; width: 100%; height: 100%; position: absolute;" />
             <img :name="3" src="https://img.freepik.com/vetores-premium/modelo-de-banner-de-vetor-de-venda-oferta-limitada_348082-1283.jpg?w=826" style="background-position: center; background-repeat: no-repeat; width: 100%; height: 100%; position: absolute;" />
