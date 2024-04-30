@@ -22,13 +22,11 @@
 	arrows
 	navigation
 	infinite
-	control-color="orange"
-	control-text-color="grey-8"
+	control-color="white"
 	:autoplay="4000"
 	@mouseenter="autoplay = false"
 	@mouseleave="autoplay = true"
 	style="height: 420px !important;"
-	class="rounded-borders"
 	v-if="isDesktop"
 	>
             <img :name="1" src="https://img.freepik.com/psd-gratuitas/banner-de-midia-social-instagram-sexta-feira-negra-para-ofertas-imperdiveis_220664-3543.jpg?t=st=1714484880~exp=1714488480~hmac=5fd0083ff64459788663b2416b9dc5d75039ba2930baceda52dcda41a8b1f2d0&w=1380" style="background-position: center; background-repeat: no-repeat; width: 100%; height: 100%; position: absolute;" />
