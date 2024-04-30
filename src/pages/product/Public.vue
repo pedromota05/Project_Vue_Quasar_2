@@ -22,10 +22,9 @@
 	arrows
 	navigation
 	infinite
-	:autoplay="autoplay"
+	:autoplay="3000"
 	@mouseenter="autoplay = false"
 	@mouseleave="autoplay = true"
-	swipeable
 	height="420"
 	v-if="isDesktop"
 	>
