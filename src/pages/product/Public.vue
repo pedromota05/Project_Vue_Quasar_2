@@ -29,7 +29,7 @@
 	v-if="isDesktop"
 	>
             <img :name="1" src="https://img.freepik.com/psd-premium/banner-de-midia-social-semana-do-consumidor-com-40-de-desconto_318354-384.jpg?w=826" style="background-position: center; background-repeat: no-repeat; width: 100%; height: 100%; position: absolute;" />
-            <img :name="2" src="https://img.freepik.com/vetores-premium/modelo-de-banner-de-vetor-de-venda-oferta-limitada_348082-926.jpg?w=826" style="background-position: center; background-repeat: no-repeat; width: 100%; height: 100%; position: absolute;" />
+            <img :name="2" src="https://img.freepik.com/psd-premium/banner-de-modelo-de-midia-social-sexta-feira-negra-chegou-com-otimas-ofertas_318354-894.jpg?w=1380" style="background-position: center; background-repeat: no-repeat; width: 100%; height: 100%; position: absolute;" />
             <img :name="3" src="https://img.freepik.com/vetores-premium/modelo-de-banner-de-vetor-de-venda-oferta-limitada_348082-1283.jpg?w=826" style="background-position: center; background-repeat: no-repeat; width: 100%; height: 100%; position: absolute;" />
         </q-carousel>
         <q-carousel
