@@ -25,6 +25,7 @@
             :autoplay="autoplay"
             @mouseenter="autoplay = false"
             @mouseleave="autoplay = true"
+					  height="420"
             v-if="isDesktop"
         >
             <img :name="1" src="https://img.freepik.com/psd-premium/banner-de-midia-social-semana-do-consumidor-com-40-de-desconto_318354-384.jpg?w=826" style="background-position: center; background-repeat: no-repeat; width: 100%; height: 100%; position: absolute;" />
@@ -113,10 +114,6 @@
                         <div class="row no-wrap items-center">
                         <div class="col text-h6 ellipsis">
                             {{ props.row.name }}
-                        </div>
-                        <div class="col-auto text-grey text-caption q-pt-md row no-wrap items-center">
-                            <q-icon name="place" />
-                            250 ft
                         </div>
                         </div>
 
