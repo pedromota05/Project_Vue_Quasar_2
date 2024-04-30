@@ -22,7 +22,8 @@
 	arrows
 	navigation
 	infinite
-	control-color="white"
+	control-color="orange"
+	control-text-color="grey-8"
 	:autoplay="4000"
 	@mouseenter="autoplay = false"
 	@mouseleave="autoplay = true"
