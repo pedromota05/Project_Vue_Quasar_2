@@ -267,6 +267,9 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.q-carousel {
+    height: 420px !important;
+}
 .input-search:focus,
 .input-search:hover {
     outline: none;
